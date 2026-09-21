@@ -77,7 +77,7 @@ log "发现更新: $UPDATED"
 
 if [ "$CHECK_ONLY" = "1" ]; then
   log "（--check-only，不执行更新）"
-  notify "集成有可用更新" "GitHub 上检测到新版本：$UPDATED"
+  notify "集成有可用更新" "GitHub 上检测到新版本：$UPDATED。每周一 12:00 会自动同步，也可手动运行 shell_command.sync_integrations。"
   rm -rf "$TMP"; exit 0
 fi
 
