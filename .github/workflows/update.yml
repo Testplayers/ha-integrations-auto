@@ -1,0 +1,48 @@
+name: 检查上游集成更新
+
+on:
+  schedule:
+    # 每周一 UTC 02:00 = 北京时间 10:00
+    - cron: "0 2 * * 1"
+  workflow_dispatch:        # 支持在网页上手动点「Run workflow」
+
+concurrency:
+  group: update-integrations
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出仓库
+        uses: actions/checkout@v4
+
+      - name: 准备 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 检测并拉取上游更新
+        id: build
+        run: |
+          python build.py | tee build.log
+          if grep -q "CHANGED:" build.log; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            grep "CHANGED:" build.log >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "无更新" >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: 提交变更
+        if: steps.build.outputs.changed == 'true'
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          MSG=$(grep "CHANGED:" build.log | sed 's/^CHANGED: //')
+          git commit -m "chore: 自动同步上游集成 — ${MSG}"
+          git push
