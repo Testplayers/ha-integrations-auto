@@ -1,0 +1,12 @@
+{
+  "domain": "longyan_water",
+  "name": "龙岩水发自来水",
+  "codeowners": ["@local"],
+  "config_flow": true,
+  "documentation": "https://service.fjlyzls.com",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "requirements": ["pillow>=10.0.0"],
+  "single_config_entry": false,
+  "version": "1.0.0"
+}

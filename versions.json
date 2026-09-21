@@ -1,0 +1,22 @@
+{
+  "built_at": "2026-09-21T03:59:39Z",
+  "integrations": {
+    "longyan_water": {
+      "version": "1.0.0",
+      "source": "self (自研)",
+      "updated_at": "2026-09-21T03:59:32Z"
+    },
+    "state_grid": {
+      "version": "0.10.0",
+      "ref": "09358319 (2026-09-19)",
+      "source": "stevenjoezhang/hass-state-grid (main 分支)",
+      "updated_at": "2026-09-21T03:59:34Z"
+    },
+    "zr_gas": {
+      "version": "0.12.2",
+      "ref": "v0.12.2",
+      "source": "yahooor/zr-gas-ha (v0.12.2)",
+      "updated_at": "2026-09-21T03:59:39Z"
+    }
+  }
+}

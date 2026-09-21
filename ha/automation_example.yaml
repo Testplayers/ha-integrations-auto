@@ -1,0 +1,15 @@
+# 把这段追加到 HA 的 automations.yaml（或直接在界面上创建同样的自动化）
+# 作用：每周一 04:10 自动从 GitHub 拉取集成更新（有更新才重启 HA）
+
+- id: auto_sync_integrations
+  alias: 每周同步集成更新
+  description: 从 Testplayers/ha-integrations-auto 拉取水/电/气集成的最新版本
+  triggers:
+    - trigger: time
+      at: "04:10:00"
+  conditions:
+    - condition: time
+      weekday: [mon]
+  actions:
+    - action: shell_command.sync_integrations
+  mode: single

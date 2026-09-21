@@ -1,0 +1,11 @@
+# 放到 HA 的 /config/shell_commands.yaml
+# 并在 configuration.yaml 里加一行：  shell_command: !include shell_commands.yaml
+
+# 检查并更新（有更新会自动重启 HA）
+sync_integrations: bash /config/sync_integrations.sh
+
+# 只检查有没有更新，不下载不重启（会发一条 HA 通知）
+sync_integrations_check: bash /config/sync_integrations.sh --check-only
+
+# 更新但不重启（想自己挑时间重启时用）
+sync_integrations_no_restart: bash /config/sync_integrations.sh --no-restart
