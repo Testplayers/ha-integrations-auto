@@ -1,5 +1,5 @@
 {
-  "built_at": "2026-11-02T08:45:13Z",
+  "built_at": "2026-11-09T08:58:09Z",
   "integrations": {
     "longyan_water": {
       "version": "1.0.0",
@@ -13,10 +13,10 @@
       "updated_at": "2026-10-05T08:08:34Z"
     },
     "zr_gas": {
-      "version": "2.2.2",
-      "ref": "v2.2.2",
-      "source": "yahooor/zr-gas-ha (v2.2.2)",
-      "updated_at": "2026-11-02T08:45:13Z"
+      "version": "2.2.4",
+      "ref": "v2.2.4",
+      "source": "yahooor/zr-gas-ha (v2.2.4)",
+      "updated_at": "2026-11-09T08:58:09Z"
     }
   }
 }
